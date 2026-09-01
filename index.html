@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Portal FA — NeoCrop Solutions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#F2F6FB;
+    --surface:#FFFFFF;
+    --ink:#12263F;
+    --ink-soft:#5B7189;
+    --line:#DDE7F2;
+    --blue:#1E88FF;
+    --blue-dark:#0B63D6;
+    --blue-wash:#E8F2FF;
+    --green:#12B981;
+    --amber:#F59E0B;
+    --radius:14px;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Plus Jakarta Sans',-apple-system,Segoe UI,Roboto,sans-serif;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1060px;margin:0 auto;padding:32px 20px 64px}
+
+  /* Header */
+  header{
+    display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between;
+    background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+    padding:22px 26px;box-shadow:0 1px 2px rgba(18,38,63,.05);
+  }
+  .brand{display:flex;align-items:center;gap:14px}
+  .logo{
+    width:46px;height:46px;border-radius:12px;flex:none;
+    background:linear-gradient(140deg,var(--blue),#5BC0FF);
+    display:grid;place-items:center;color:#fff;font-weight:800;font-size:17px;letter-spacing:.5px;
+  }
+  h1{font-size:22px;font-weight:800;margin:0;letter-spacing:-.3px}
+  .brand p{margin:2px 0 0;font-size:13.5px;color:var(--ink-soft)}
+  .stamp{
+    font-size:13px;color:var(--ink-soft);background:var(--blue-wash);
+    border-radius:999px;padding:7px 14px;font-weight:600;
+  }
+
+  /* Section heads */
+  .section-head{display:flex;align-items:baseline;gap:10px;margin:34px 2px 14px}
+  .section-head h2{font-size:16px;margin:0;font-weight:700}
+  .section-head span{font-size:13.5px;color:var(--ink-soft)}
+
+  /* FA grid */
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
+  .card{
+    background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+    padding:20px;display:flex;flex-direction:column;gap:14px;
+    box-shadow:0 1px 2px rgba(18,38,63,.05);
+  }
+  .who{display:flex;gap:13px;align-items:center}
+  .avatar{
+    width:42px;height:42px;border-radius:50%;flex:none;display:grid;place-items:center;
+    background:var(--blue-wash);color:var(--blue-dark);font-weight:700;font-size:15px;
+  }
+  .name{font-weight:700;font-size:15.5px;margin:0}
+  .meta{margin:1px 0 0;font-size:13px;color:var(--ink-soft)}
+  .code{
+    font-size:11.5px;font-weight:700;color:var(--green);
+    background:#E4F8F1;border-radius:6px;padding:2px 7px;margin-left:6px;
+  }
+  .actions{display:flex;gap:9px;margin-top:auto}
+  .btn{
+    font:inherit;font-weight:600;font-size:14px;border-radius:10px;cursor:pointer;
+    padding:11px 14px;border:1px solid transparent;transition:background .15s,border-color .15s;
+  }
+  .btn:focus-visible{outline:3px solid rgba(30,136,255,.4);outline-offset:2px}
+  .btn-main{background:var(--blue);color:#fff;flex:1;text-align:center;text-decoration:none}
+  .btn-main:hover{background:var(--blue-dark)}
+  .btn-ghost{background:#fff;color:var(--ink-soft);border-color:var(--line)}
+  .btn-ghost:hover{border-color:#B9CCE2;color:var(--ink)}
+
+  /* Admin */
+  .admin{
+    background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--amber);
+    border-radius:var(--radius);padding:22px 24px;box-shadow:0 1px 2px rgba(18,38,63,.05);
+  }
+  .admin h3{margin:0;font-size:15.5px;font-weight:700}
+  .admin p{margin:6px 0 16px;font-size:13.5px;color:var(--ink-soft);max-width:62ch}
+  .pw-row{display:flex;flex-wrap:wrap;gap:10px}
+  .pw-field{position:relative;flex:1;min-width:230px;display:flex}
+  #pw{
+    font:inherit;font-size:14px;padding:11px 44px 11px 14px;border:1px solid var(--line);
+    border-radius:10px;width:100%;background:#FBFDFF;color:var(--ink);
+  }
+  #pw:focus{outline:3px solid rgba(30,136,255,.35);outline-offset:1px;border-color:var(--blue)}
+  .pw-toggle{
+    position:absolute;right:4px;top:50%;transform:translateY(-50%);
+    width:34px;height:34px;display:grid;place-items:center;
+    background:none;border:0;border-radius:8px;cursor:pointer;color:var(--ink-soft);
+  }
+  .pw-toggle:hover{color:var(--blue-dark);background:var(--blue-wash)}
+  .pw-toggle:focus-visible{outline:3px solid rgba(30,136,255,.4);outline-offset:1px}
+  .pw-toggle svg{width:19px;height:19px;display:block}
+  .btn-admin{background:var(--ink);color:#fff}
+  .btn-admin:hover{background:#0A1B2E}
+  .hint{margin:12px 0 0;font-size:13px;color:var(--ink-soft);min-height:19px}
+  .hint.bad{color:#D93B4B;font-weight:600}
+
+  /* Toast */
+  #toast{
+    position:fixed;left:50%;bottom:26px;transform:translateX(-50%) translateY(20px);
+    background:var(--ink);color:#fff;font-size:13.5px;font-weight:600;
+    padding:11px 18px;border-radius:999px;opacity:0;pointer-events:none;transition:.22s;
+  }
+  #toast.on{opacity:1;transform:translateX(-50%) translateY(0)}
+
+  footer{margin-top:34px;text-align:center;font-size:12.5px;color:var(--ink-soft)}
+
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+  @media (max-width:520px){
+    h1{font-size:19px}
+    .wrap{padding:20px 14px 48px}
+    header{padding:18px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="brand">
+      <div class="logo">NC</div>
+      <div>
+        <h1>Portal FA Operating System</h1>
+        <p>NeoCrop Solutions Indonesia — absensi, aktivitas harian, dan KPI lapangan</p>
+      </div>
+    </div>
+    <div class="stamp" id="today"></div>
+  </header>
+
+  <div class="section-head">
+    <h2>Field Assistant</h2>
+    <span>Pilih nama Anda, lalu simpan halaman itu sebagai bookmark.</span>
+  </div>
+
+  <div class="grid" id="grid"></div>
+
+  <div class="section-head">
+    <h2>Akses admin / RSM</h2>
+    <span>Melihat data seluruh FA</span>
+  </div>
+
+  <div class="admin">
+    <h3>Masuk sebagai admin</h3>
+    <p>Masukkan kata sandi admin untuk membuka dashboard gabungan. Kata sandi tidak disimpan di halaman ini — hanya dipakai saat tombol ditekan.</p>
+    <div class="pw-row">
+      <div class="pw-field">
+        <input type="password" id="pw" placeholder="Kata sandi admin" autocomplete="current-password">
+        <button type="button" class="pw-toggle" id="togglePw" aria-label="Tampilkan kata sandi" aria-pressed="false" title="Tampilkan kata sandi"></button>
+      </div>
+      <button class="btn btn-admin" id="goAdmin">Buka dashboard admin</button>
+    </div>
+    <p class="hint" id="hint"></p>
+  </div>
+
+  <footer>FA Operating System · Internal NeoCrop Solutions</footer>
+</div>
+
+<div id="toast"></div>
+
+<script>
+const BASE = "https://script.google.com/macros/s/AKfycbz8FFEY0FTcWOaOXFXaayBdTGvLI_6Zt--zSdVC_EAwaBK_lPFyBSUv6z3twVLicp4n/exec";
+
+const FA = [
+  { code:"FA001", name:"Taufiq Muhammad Nur",  area:"Demak, Jawa Tengah" },
+  { code:"FA002", name:"Hadi Pratomo",         area:"Brebes, Jawa Tengah" },
+  { code:"FA003", name:"Ahmad Khumaidi",       area:"Jember, Jawa Timur" },
+  { code:"FA004", name:"Syeli Agusningsih",    area:"Garut / Bandung, Jawa Barat" },
+  { code:"FA005", name:"Yuan Firmansyah",      area:"Garut, Jawa Barat" },
+  { code:"FA006", name:"Firdian Iga Safitri",  area:"Ponorogo, Jawa Timur" }
+];
+
+const linkFA = c => BASE + "?fa=" + encodeURIComponent(c);
+const initials = n => n.trim().split(/\s+/).slice(0,2).map(w => w[0]).join("").toUpperCase();
+
+document.getElementById("today").textContent =
+  new Date().toLocaleDateString("id-ID", { weekday:"long", day:"numeric", month:"long", year:"numeric" });
+
+const grid = document.getElementById("grid");
+FA.forEach(fa => {
+  const url = linkFA(fa.code);
+  const card = document.createElement("div");
+  card.className = "card";
+  card.innerHTML = `
+    <div class="who">
+      <div class="avatar">${initials(fa.name)}</div>
+      <div>
+        <p class="name">${fa.name}<span class="code">${fa.code}</span></p>
+        <p class="meta">${fa.area}</p>
+      </div>
+    </div>
+    <div class="actions">
+      <a class="btn btn-main" href="${url}" target="_blank" rel="noopener">Buka dashboard</a>
+      <button class="btn btn-ghost" data-copy="${url}">Salin link</button>
+    </div>`;
+  grid.appendChild(card);
+});
+
+grid.addEventListener("click", e => {
+  const b = e.target.closest("[data-copy]");
+  if (!b) return;
+  navigator.clipboard.writeText(b.dataset.copy)
+    .then(() => toast("Link tersalin — siap dikirim lewat WhatsApp"))
+    .catch(() => toast("Link gagal disalin, buka dashboard lalu salin dari address bar"));
+});
+
+const pw = document.getElementById("pw");
+const hint = document.getElementById("hint");
+
+/* Tombol mata: tampilkan / sembunyikan kata sandi */
+const S = 'stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" fill="none"';
+const EYE = `<svg viewBox="0 0 24 24" aria-hidden="true"><path ${S} d="M2.2 12S5.8 5.5 12 5.5 21.8 12 21.8 12 18.2 18.5 12 18.5 2.2 12 2.2 12Z"/><circle ${S} cx="12" cy="12" r="3.1"/></svg>`;
+const EYE_OFF = `<svg viewBox="0 0 24 24" aria-hidden="true"><path ${S} d="M9.9 5.8A9.6 9.6 0 0 1 12 5.5c6.2 0 9.8 6.5 9.8 6.5a17 17 0 0 1-3.4 4.1M6.2 7.3A17 17 0 0 0 2.2 12S5.8 18.5 12 18.5a9.4 9.4 0 0 0 3.7-.74"/><path ${S} d="M10 10a2.9 2.9 0 0 0 4 4"/><path ${S} d="m3.4 3.4 17.2 17.2"/></svg>`;
+
+const togglePw = document.getElementById("togglePw");
+togglePw.innerHTML = EYE;
+togglePw.addEventListener("click", () => setPwVisible(pw.type === "password"));
+
+function setPwVisible(show){
+  pw.type = show ? "text" : "password";
+  togglePw.innerHTML = show ? EYE_OFF : EYE;
+  const label = show ? "Sembunyikan kata sandi" : "Tampilkan kata sandi";
+  togglePw.setAttribute("aria-label", label);
+  togglePw.setAttribute("title", label);
+  togglePw.setAttribute("aria-pressed", show ? "true" : "false");
+}
+
+function openAdmin(){
+  const val = pw.value.trim();
+  if (!val) {
+    hint.textContent = "Isi kata sandi admin dulu.";
+    hint.className = "hint bad";
+    pw.focus();
+    return;
+  }
+  hint.textContent = "Membuka dashboard admin di tab baru…";
+  hint.className = "hint";
+  window.open(BASE + "?pw=" + encodeURIComponent(val), "_blank", "noopener");
+  pw.value = "";
+  setPwVisible(false);
+}
+
+document.getElementById("goAdmin").addEventListener("click", openAdmin);
+pw.addEventListener("keydown", e => { if (e.key === "Enter") openAdmin(); });
+
+let t;
+function toast(msg){
+  const el = document.getElementById("toast");
+  el.textContent = msg;
+  el.classList.add("on");
+  clearTimeout(t);
+  t = setTimeout(() => el.classList.remove("on"), 2200);
+}
+</script>
+</body>
+</html>
